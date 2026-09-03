@@ -1,0 +1,21 @@
+[Unit]
+Description=Twitch Zap - pont Hyprland (focus fenetre + visibilite ecrans)
+After=graphical-session.target
+PartOf=graphical-session.target
+# Attention : ces deux cles vont dans [Unit], pas dans [Service]. Placees
+# ailleurs, systemd les ignore avec un simple avertissement dans le journal et
+# garde le defaut (5 essais en 10 s), qui fait abandonner tres vite.
+StartLimitIntervalSec=60
+StartLimitBurst=10
+
+[Service]
+Type=simple
+ExecStart=@NODE@ @DAEMON@
+# always plutot que on-failure : un helper doit revenir meme apres une sortie
+# propre.
+Restart=always
+RestartSec=3
+SyslogIdentifier=twitch-zap
+
+[Install]
+WantedBy=graphical-session.target

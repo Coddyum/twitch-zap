@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "Twitch Zap",
+  "version": "1.1.4",
+  "description": "Navigation instantanee entre chaines Twitch ouvertes + mute auto des chaines non regardees.",
+  "permissions": [
+    "tabs",
+    "storage",
+    "alarms",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.twitch.tv/*",
+    "http://127.0.0.1:8787/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Twitch Zap"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Space"
+      },
+      "description": "Ouvrir Twitch Zap"
+    },
+    "toggle-audio-mode": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+M"
+      },
+      "description": "Basculer mode audio solo / ecrans"
+    },
+    "remute-all": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U"
+      },
+      "description": "Oublier les exceptions et remuter tout"
+    },
+    "previous-channel": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+X"
+      },
+      "description": "Revenir a la chaine precedente"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.twitch.tv/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}

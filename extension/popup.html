@@ -1,0 +1,25 @@
+<!doctype html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+<div class="wrap">
+  <input id="q" type="text" placeholder="Chaine…" autocomplete="off" spellcheck="false" autofocus>
+  <div id="wins" class="wins"></div>
+  <ul id="list"></ul>
+  <div id="stats" class="stats" hidden></div>
+  <div class="bar">
+    <button id="mode" class="chip">solo</button>
+    <button id="bg" class="chip">eco off</button>
+    <button id="auto" class="chip" title="Couper completement le mute automatique">auto-mute</button>
+    <button id="follow" class="chip" title="Laisser le focus de fenetre (survol souris) changer la chaine ecoutee. Deconseille en focus-follows-mouse.">suivi souris</button>
+    <button id="catalog" class="chip" title="Afficher aussi les chaines connues dont aucun onglet n'est ouvert">catalogue</button>
+    <button id="statsBtn" class="chip" title="Temps passe par chaine">stats</button>
+    <button id="remute" class="chip" title="Oublier les exceptions manuelles (Ctrl+Shift+U)">reset</button>
+    <span id="daemon" class="dot"></span>
+  </div>
+  <div class="help">
+    <b>Entree</b> aller · <b>Ctrl+Entree</b> ecouter sans bouger · <b>Alt+1-9</b> direct ·
+    <b>Ctrl+↑↓</b> volume · <b>Alt+F</b> favori · <b>Suppr</b> retirer de la liste
+    <span id="diag" class="diag"></span>
+  </div>
+</div>
+<script src="popup.js"></script>
